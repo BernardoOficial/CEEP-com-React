@@ -1,8 +1,17 @@
+import React, { Component } from 'react'
+import FormularioCadastro from './components/FormularioCadastro';
+import ListaDeTarefas from './components/ListaDeTarefas'
 
-function App() {
-  return (
-    <h1>Projeto CEEP</h1>
-  )
+class App extends Component {
+
+  render() {
+    return (
+      <section>
+        <FormularioCadastro />
+        <ListaDeTarefas />
+      </section>
+    )
+  }
 }
 
 export default App;
