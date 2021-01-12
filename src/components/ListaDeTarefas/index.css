@@ -1,0 +1,13 @@
+.lista__tarefas {
+    margin: 50px auto 30px auto;
+    width: 95%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    justify-content: center;
+    align-content: center;
+
+    gap: 10px;
+}
