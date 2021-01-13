@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import FormularioCadastro from './components/FormularioCadastro/';
 import ListaDeTarefas from './components/ListaDeTarefas/'
 
-import "./assets/App.css"
 import "./assets/index.css"
+import "./assets/App.css"
 
 class App extends Component {
 
@@ -11,7 +11,7 @@ class App extends Component {
     super();
 
     this.state = {
-      tarefas: []
+      tarefas: this._getTarefasLocalStorage()
     }
 
     this._reference = this;
@@ -27,6 +27,18 @@ class App extends Component {
     }
 
     this.setState(novoObjetoEstadoTarefas);
+
+    this._saveTarefasLocalStorage(novoObjetoEstadoTarefas.tarefas);
+  }
+
+  _saveTarefasLocalStorage(tarefas) {
+
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }
+
+  _getTarefasLocalStorage() {
+
+    return JSON.parse(localStorage.getItem('tarefas')) || [];
   }
 
   render() {

@@ -1,6 +1,6 @@
-html {
+:root {
     font-family: Poppins, Calibri, Arial;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 14px;
     color: #333333;
 }
@@ -16,7 +16,7 @@ input, textarea {
     outline: none;
 
     font-family: Poppins, Calibri, Arial;
-    font-size: 10px;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 16px;
     color: #333333;
 }
