@@ -1,6 +1,6 @@
 # CEEP - Gerenciador de tarefas
 
-![GIF demonstrativo do projeto CEEP](./src/assets/images/ceep.GIF)
+![GIF demonstrativo do projeto CEEP](./src/assets/images/ceep.gif)
 
 ## Aprendizado
 
