@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+
 import "./index.css"
 
 class CardLista extends Component {
 
-    render(props) {
+    render() {
         return (
             <section className="card__lista">
                 <header>
@@ -14,7 +15,7 @@ class CardLista extends Component {
                 </header>
                 <p
                     className="card__lista__texto">
-                    Texto da {this.props.titulo}
+                    {this.props.texto}
                 </p>
             </section>
         );

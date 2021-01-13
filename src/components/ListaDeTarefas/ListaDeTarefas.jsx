@@ -8,10 +8,11 @@ class ListaDeTarefas extends Component {
 
         return (
             <ul className="lista__tarefas">
-                {Array.of("1ª Tarefa", "2ª Tarefa", "3ª Tarefa").map((categoria, index) => {
+                {this.props.tarefas.map((tarefa, index) => {
                     return (
                         <li key={index}>
-                            <CardLista titulo={categoria} />
+                            {console.log(this.props.tarefas)}
+                            <CardLista titulo={tarefa.titulo} texto={tarefa.texto} />
                         </li>
                     )
                 })}
