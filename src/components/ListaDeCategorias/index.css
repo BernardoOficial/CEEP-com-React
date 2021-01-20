@@ -1,0 +1,34 @@
+.categorias__content {
+    position: relative;
+    min-height: 38px;
+    background-color: #743600;
+}
+.listadecategorias {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px;
+    
+    color: #cccccc;
+}
+.listadecategorias li {
+    margin: 0 5px;
+    padding: 7px;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.categorias__content input {
+    position: absolute;
+    right: 10px;
+    top: 10%;
+
+    width: 300px;
+
+    background-color: #ffffff;
+    color: #444444;
+    padding: 0 7px;
+
+    height: 80%;
+}

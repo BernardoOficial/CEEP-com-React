@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FormularioCadastro from './components/FormularioCadastro/';
 import ListaDeTarefas from './components/ListaDeTarefas/'
+import ListaDeCategorias from './components/ListaDeCategorias/ListaDeCategorias';
 
 import "./assets/index.css"
 import "./assets/App.css"
@@ -11,7 +12,8 @@ class App extends Component {
     super();
 
     this.state = {
-      tarefas: this._getTarefasLocalStorage()
+      tarefas: this._getTarefasLocalStorage(),
+      categorias: this._getCategoriasLocalStorage(),
     }
 
     this._reference = this;
@@ -31,14 +33,34 @@ class App extends Component {
     this._saveTarefasLocalStorage(novoObjetoEstadoTarefas.tarefas);
   }
 
+  criarNovaCategoria(novaCategoria) {
+
+    const novoEstadoCategorias = [...this.state.categorias, novaCategoria];
+    const novoEstado = { ...this.state, categorias: novoEstadoCategorias };
+
+    this.setState(novoEstado);
+
+    this._saveCategoriasLocalStorage(novoEstadoCategorias);
+  }
+
   _saveTarefasLocalStorage(tarefas) {
 
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
   }
 
+  _saveCategoriasLocalStorage(categorias) {
+
+    localStorage.setItem('categorias', JSON.stringify(categorias));
+  }
+
   _getTarefasLocalStorage() {
 
     return JSON.parse(localStorage.getItem('tarefas')) || [];
+  }
+
+  _getCategoriasLocalStorage() {
+
+    return JSON.parse(localStorage.getItem('categorias')) || [];
   }
 
   apagarTarefa(index) {
@@ -60,10 +82,16 @@ class App extends Component {
         <FormularioCadastro
           criarTarefa={this.criarTarefa.bind(this._reference)}
         />
-        <ListaDeTarefas
-          apagarTarefa={this.apagarTarefa.bind(this._reference)}
-          tarefas={this.state.tarefas}
-        />
+        <main>
+          <ListaDeCategorias
+            criarNovaCategoria={this.criarNovaCategoria.bind(this)}
+            categorias={this.state.categorias}
+          />
+          <ListaDeTarefas
+            apagarTarefa={this.apagarTarefa.bind(this._reference)}
+            tarefas={this.state.tarefas}
+          />
+        </main>
       </section>
     )
   }
