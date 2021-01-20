@@ -11,7 +11,12 @@ class ListaDeTarefas extends Component {
                 {this.props.tarefas.map((tarefa, index) => {
                     return (
                         <li key={index}>
-                            <CardLista titulo={tarefa.titulo} texto={tarefa.texto} />
+                            <CardLista
+                                index={index}
+                                apagarTarefa={this.props.apagarTarefa}
+                                titulo={tarefa.titulo}
+                                texto={tarefa.texto}
+                            />
                         </li>
                     )
                 })}

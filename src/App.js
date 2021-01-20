@@ -41,11 +41,29 @@ class App extends Component {
     return JSON.parse(localStorage.getItem('tarefas')) || [];
   }
 
+  apagarTarefa(index) {
+
+    const tarefas = this.state.tarefas;
+    tarefas.splice(index, 1);
+
+    const novoObjetoEstadoTarefas = {
+      tarefas: tarefas
+    }
+
+    this.setState(novoObjetoEstadoTarefas);
+    this._saveTarefasLocalStorage(novoObjetoEstadoTarefas.tarefas);
+  }
+
   render() {
     return (
       <section>
-        <FormularioCadastro criarTarefa={this.criarTarefa.bind(this._reference)} />
-        <ListaDeTarefas tarefas={this.state.tarefas} />
+        <FormularioCadastro
+          criarTarefa={this.criarTarefa.bind(this._reference)}
+        />
+        <ListaDeTarefas
+          apagarTarefa={this.apagarTarefa.bind(this._reference)}
+          tarefas={this.state.tarefas}
+        />
       </section>
     )
   }

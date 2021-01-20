@@ -5,6 +5,15 @@
 
     background-color: #cccccc;
     border-radius: 4px;
+
+    position: relative;
+}
+.delete__svg {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+
+    fill: #ffffff;
 }
 .card__lista__titulo {
     display: block;
