@@ -8,10 +8,10 @@ class ListaDeCategorias extends Component {
 
         if (e.key === "Enter") {
 
-            const novacategoria = e.target.value;
+            const novaCategoria = e.target.value;
             e.target.value = "";
 
-            this.props.criarNovaCategoria(novacategoria);
+            this.props.criarNovaCategoria(novaCategoria);
         }
     }
 

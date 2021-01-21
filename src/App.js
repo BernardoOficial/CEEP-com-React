@@ -3,6 +3,9 @@ import FormularioCadastro from './components/FormularioCadastro/';
 import ListaDeTarefas from './components/ListaDeTarefas/'
 import ListaDeCategorias from './components/ListaDeCategorias/ListaDeCategorias';
 
+import Categorias from './dados/Categorias';
+import Tarefas from './dados/Tarefas';
+
 import "./assets/index.css"
 import "./assets/App.css"
 
@@ -10,87 +13,25 @@ class App extends Component {
 
   constructor() {
     super();
-
-    this.state = {
-      tarefas: this._getTarefasLocalStorage(),
-      categorias: this._getCategoriasLocalStorage(),
-    }
-
-    this._reference = this;
-  }
-
-  criarTarefa(titulo, texto, categoria) {
-
-    const novaTarefa = { titulo, texto, categoria };
-    const novoEstadoTarefas = [...this.state.tarefas, novaTarefa];
-
-    const novoObjetoEstadoTarefas = {
-      tarefas: novoEstadoTarefas
-    }
-
-    this.setState(novoObjetoEstadoTarefas);
-
-    this._saveTarefasLocalStorage(novoObjetoEstadoTarefas.tarefas);
-  }
-
-  criarNovaCategoria(novaCategoria) {
-
-    const novoEstadoCategorias = [...this.state.categorias, novaCategoria];
-    const novoEstado = { ...this.state, categorias: novoEstadoCategorias };
-
-    this.setState(novoEstado);
-
-    this._saveCategoriasLocalStorage(novoEstadoCategorias);
-  }
-
-  _saveTarefasLocalStorage(tarefas) {
-
-    localStorage.setItem('tarefas', JSON.stringify(tarefas));
-  }
-
-  _saveCategoriasLocalStorage(categorias) {
-
-    localStorage.setItem('categorias', JSON.stringify(categorias));
-  }
-
-  _getTarefasLocalStorage() {
-
-    return JSON.parse(localStorage.getItem('tarefas')) || [];
-  }
-
-  _getCategoriasLocalStorage() {
-
-    return JSON.parse(localStorage.getItem('categorias')) || [];
-  }
-
-  apagarTarefa(index) {
-
-    const tarefas = this.state.tarefas;
-    tarefas.splice(index, 1);
-
-    const novoObjetoEstadoTarefas = {
-      tarefas: tarefas
-    }
-
-    this.setState(novoObjetoEstadoTarefas);
-    this._saveTarefasLocalStorage(novoObjetoEstadoTarefas.tarefas);
+    this.categorias = new Categorias();
+    this.tarefas = new Tarefas();
   }
 
   render() {
     return (
       <section>
         <FormularioCadastro
-          categorias={this.state.categorias}
-          criarTarefa={this.criarTarefa.bind(this._reference)}
+          categorias={this.categorias.categorias}
+          criarTarefa={this.tarefas.criarTarefa.bind(this.tarefas)}
         />
         <main>
           <ListaDeCategorias
-            criarNovaCategoria={this.criarNovaCategoria.bind(this)}
-            categorias={this.state.categorias}
+            criarNovaCategoria={this.categorias.criarNovaCategoria.bind(this.categorias)}
+            categorias={this.categorias.categorias}
           />
           <ListaDeTarefas
-            apagarTarefa={this.apagarTarefa.bind(this._reference)}
-            tarefas={this.state.tarefas}
+            apagarTarefa={this.tarefas.apagarTarefa.bind(this.tarefas)}
+            tarefas={this.tarefas.tarefas}
           />
         </main>
       </section>
