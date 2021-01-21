@@ -13,13 +13,14 @@ export default class Categorias {
         this._inscritos.forEach(func => func(this.categorias));
     }
 
+    desinscrever(func) {
+        this._inscritos = this._inscritos.filter(f => f !== func);
+    }
+
     criarNovaCategoria(novaCategoria) {
         this.categorias.push(novaCategoria);
-
-        console.log(this.categorias);
-        console.log(this);
-
         this.saveCategoriasLocalStorage(this.categorias);
+        this.notificar();
     }
 
     saveCategoriasLocalStorage(categorias) {

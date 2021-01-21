@@ -8,10 +8,23 @@ class FormularioCadastro extends Component {
         super(props);
         this._titulo = "";
         this._texto = "";
-        this._categoria = "";
+        this._categoria = "sem categoria";
 
-        // Referência para a instancia da classe
-        this._reference = this;
+        this.state = { categorias: [] };
+
+        this._novasCategorias = this._novasCategorias.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.categorias.inscrever(this._novasCategorias);
+    }
+
+    componentWillUnmount() {
+        this.props.categorias.desinscrever(this._novasCategorias);
+    }
+
+    _novasCategorias(categorias) {
+        this.setState({ ...this.state.categorias, categorias });
     }
 
     _handleMudancaTitulo(evento) {
@@ -40,12 +53,12 @@ class FormularioCadastro extends Component {
 
         return (
             <form className="formulario__cadastro"
-                onSubmit={this._criarTarefa.bind(this._reference)}>
+                onSubmit={this._criarTarefa.bind(this)}>
                 <select onChange={this._handleMudancaCategoria.bind(this)} className="formulario__cadastro__select">
 
                     <option disabled selected >Sem categoria</option>
 
-                    {this.props.categorias.map((categoria, key) => {
+                    {this.props.categorias.categorias.map((categoria, key) => {
                         return <option key={key}>{categoria}</option>
                     })}
                 </select>
@@ -53,12 +66,12 @@ class FormularioCadastro extends Component {
                     className="formulario__cadastro__input"
                     type="text"
                     placeholder="Título da tarefa"
-                    onChange={this._handleMudancaTitulo.bind(this._reference)}
+                    onChange={this._handleMudancaTitulo.bind(this)}
                 />
                 <textarea
                     className="formulario__cadastro__textarea"
                     placeholder="Digite a tarefa..."
-                    onChange={this._handleMudancaTexto.bind(this._reference)}
+                    onChange={this._handleMudancaTexto.bind(this)}
                 />
                 <button
                     className="formulario__cadastro__button">

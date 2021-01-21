@@ -21,17 +21,17 @@ class App extends Component {
     return (
       <section>
         <FormularioCadastro
-          categorias={this.categorias.categorias}
+          categorias={this.categorias}
           criarTarefa={this.tarefas.criarTarefa.bind(this.tarefas)}
         />
         <main>
           <ListaDeCategorias
             criarNovaCategoria={this.categorias.criarNovaCategoria.bind(this.categorias)}
-            categorias={this.categorias.categorias}
+            categorias={this.categorias}
           />
           <ListaDeTarefas
             apagarTarefa={this.tarefas.apagarTarefa.bind(this.tarefas)}
-            tarefas={this.tarefas.tarefas}
+            tarefas={this.tarefas}
           />
         </main>
       </section>

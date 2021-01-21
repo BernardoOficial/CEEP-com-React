@@ -13,17 +13,22 @@ export default class Tarefas {
         this._inscritos.forEach(func => func(this.tarefas));
     }
 
+    desinscrever(func) {
+        this._inscritos = this._inscritos.filter(f => f !== func);
+    }
+
     criarTarefa(titulo, texto, categoria) {
         const novaTarefa = new criarTarefa(titulo, texto, categoria);
         this.tarefas.push(novaTarefa);
 
         this.saveTarefasLocalStorage(this.tarefas);
+        this.notificar();
     }
 
     apagarTarefa(index) {
-
         this.tarefas.splice(index, 1);
         this.saveTarefasLocalStorage(this.tarefas);
+        this.notificar();
     }
 
     saveTarefasLocalStorage(tarefas) {
