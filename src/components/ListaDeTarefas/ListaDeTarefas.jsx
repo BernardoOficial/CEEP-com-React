@@ -16,6 +16,7 @@ class ListaDeTarefas extends Component {
                                 apagarTarefa={this.props.apagarTarefa}
                                 titulo={tarefa.titulo}
                                 texto={tarefa.texto}
+                                categoria={tarefa.categoria}
                             />
                         </li>
                     )

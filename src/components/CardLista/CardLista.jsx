@@ -19,6 +19,9 @@ class CardLista extends Component {
                         className="card__lista__titulo">
                         {this.props.titulo}
                     </h1>
+                    <h6 className="card__lista__categoria">
+                        Categoria: {this.props.categoria}
+                    </h6>
                     <DeleteSVG
                         className="delete__svg"
                         onClick={this.apagarTarefa.bind(this)}

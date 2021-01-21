@@ -8,6 +8,7 @@ class FormularioCadastro extends Component {
         super(props);
         this._titulo = "";
         this._texto = "";
+        this._categoria = "";
 
         // Referência para a instancia da classe
         this._reference = this;
@@ -23,11 +24,16 @@ class FormularioCadastro extends Component {
         this._texto = evento.target.value;
     }
 
+    _handleMudancaCategoria(evento) {
+
+        this._categoria = evento.target.value;
+    }
+
     _criarTarefa(evento) {
 
         evento.preventDefault();
         evento.stopPropagation();
-        this.props.criarTarefa(this._titulo, this._texto);
+        this.props.criarTarefa(this._titulo, this._texto, this._categoria);
     }
 
     render() {
@@ -35,6 +41,14 @@ class FormularioCadastro extends Component {
         return (
             <form className="formulario__cadastro"
                 onSubmit={this._criarTarefa.bind(this._reference)}>
+                <select onChange={this._handleMudancaCategoria.bind(this)} className="formulario__cadastro__select">
+
+                    <option disabled selected >Sem categoria</option>
+
+                    {this.props.categorias.map((categoria, key) => {
+                        return <option key={key}>{categoria}</option>
+                    })}
+                </select>
                 <input
                     className="formulario__cadastro__input"
                     type="text"

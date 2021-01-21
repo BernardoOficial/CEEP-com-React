@@ -17,6 +17,13 @@
     justify-content: space-between;
     align-items: space-between;
 }
+.formulario__cadastro__select {
+    font-family: Poppins, Calibri, Arial;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
 .formulario__cadastro__input {
     font-family: Poppins, Calibri, Arial;
     padding: 10px;

@@ -19,9 +19,9 @@ class App extends Component {
     this._reference = this;
   }
 
-  criarTarefa(titulo, texto) {
+  criarTarefa(titulo, texto, categoria) {
 
-    const novaTarefa = { titulo, texto };
+    const novaTarefa = { titulo, texto, categoria };
     const novoEstadoTarefas = [...this.state.tarefas, novaTarefa];
 
     const novoObjetoEstadoTarefas = {
@@ -80,6 +80,7 @@ class App extends Component {
     return (
       <section>
         <FormularioCadastro
+          categorias={this.state.categorias}
           criarTarefa={this.criarTarefa.bind(this._reference)}
         />
         <main>
