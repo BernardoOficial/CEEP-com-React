@@ -56,7 +56,7 @@ class FormularioCadastro extends Component {
                 onSubmit={this._criarTarefa.bind(this)}>
                 <select onChange={this._handleMudancaCategoria.bind(this)} className="formulario__cadastro__select">
 
-                    <option disabled selected >Sem categoria</option>
+                    <option disabled={true} selected={true} >Sem categoria</option>
 
                     {this.props.categorias.categorias.map((categoria, key) => {
                         return <option key={key}>{categoria}</option>

@@ -3,6 +3,7 @@ export default class Tarefas {
     constructor() {
         this.tarefas = this.getTarefasLocalStorage();
         this._inscritos = [];
+        this._inscritosTarefasSelecionadas = [];
         this.tarefasSelecionadas = [];
     }
 
@@ -10,12 +11,16 @@ export default class Tarefas {
         this._inscritos.push(func);
     }
 
+    inscreverTarefasSelecionadas(func) {
+        this._inscritosTarefasSelecionadas.push(func);
+    }
+
     notificar() {
         this._inscritos.forEach(func => func(this.tarefas));
     }
 
     notificarTarefasSelecionadas() {
-        this._inscritos.forEach(func => func(this.tarefasSelecionadas));
+        this._inscritosTarefasSelecionadas.forEach(func => func(this.tarefasSelecionadas));
     }
 
     desinscrever(func) {
@@ -38,12 +43,15 @@ export default class Tarefas {
 
     selecionarTarefas(texto) {
         this.tarefasSelecionadas = this.tarefas.filter(tarefa => {
+
             const textoFormat = texto.trim().toLowerCase();
-            if (tarefa.titulo.toLowerCase().includes(textoFormat))
-                return tarefa;
+
+            if (texto.length === 0) return "";
+
+            return tarefa.titulo.trim().toLowerCase().includes(textoFormat);
         });
 
-        //console.log(this.tarefasSelecionadas);
+        console.log(this.tarefasSelecionadas);
         this.notificarTarefasSelecionadas();
     }
 
