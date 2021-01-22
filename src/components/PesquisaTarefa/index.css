@@ -1,0 +1,20 @@
+.pesquisa__input {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #743600;
+
+    color: #743600;
+    transition: 0.3s linear;
+}
+.pesquisa__input:focus {
+    transition: 0.3s linear;
+    box-shadow: 5px 5px 1px 5px #743600,
+               -5px -5px 1px 5px #743600;
+}
+.pesquisa__input::placeholder {
+    color: #743600;
+}

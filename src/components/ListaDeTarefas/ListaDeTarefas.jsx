@@ -7,12 +7,14 @@ class ListaDeTarefas extends Component {
     constructor() {
         super();
 
-        this.state = { tarefas: [] };
+        this.tarefasSelecionadas = [];
+        this.state = { tarefas: this.tarefasSelecionadas || this.props.tarefas.tarefas };
         this._novasTarefas = this._novasTarefas.bind(this);
     }
 
     componentDidMount() {
         this.props.tarefas.inscrever(this._novasTarefas);
+        this.props.tarefas.inscrever(this._selecionarTarefa);
     }
 
     componentWillUnmount() {
@@ -23,11 +25,15 @@ class ListaDeTarefas extends Component {
         this.setState({ ...this.state.tarefas, tarefas });
     }
 
+    _selecionarTarefa(tarefasSelecionadas) {
+        this.tarefasSelecionadas = tarefasSelecionadas;
+    }
+
     render() {
 
         return (
             <ul className="lista__tarefas">
-                {this.props.tarefas.tarefas.map((tarefa, index) => {
+                {this.state.tarefas.map((tarefa, index) => {
                     return (
                         <li key={index}>
                             <CardLista

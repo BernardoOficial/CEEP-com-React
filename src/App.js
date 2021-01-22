@@ -8,6 +8,7 @@ import Tarefas from './dados/Tarefas';
 
 import "./assets/index.css"
 import "./assets/App.css"
+import PesquisaTarefa from './components/PesquisaTarefa';
 
 class App extends Component {
 
@@ -20,6 +21,9 @@ class App extends Component {
   render() {
     return (
       <section>
+        <PesquisaTarefa
+          tarefas={this.tarefas}
+        />
         <FormularioCadastro
           categorias={this.categorias}
           criarTarefa={this.tarefas.criarTarefa.bind(this.tarefas)}
